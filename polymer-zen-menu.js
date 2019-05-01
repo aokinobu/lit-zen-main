@@ -17,13 +17,17 @@ class ZenMenuElement extends LitElement {
 
   render() {
     return html`
-      <style> .xp { color: red;   display: block;  float: left;   border: 1px solid red;   } </style>
+      <style> .xp { color: orange;   display: block;  float: left;   border: 1px solid orange;   }
+      .menu { color: red;   display: block;  float: left;   border: 1px solid red;   }
+       </style>
+       <div class="menu">
       <span class="title">This is the Zen Menu Component.</br></span>
       <span class="tooltip">Current XP:</span><br />
       <span class="xp" >${this.xp}</span><br />
       <span class="tooltip">Current Menu:</span><br />
       <div class="menu" >${this.menu}</div>
       <zen-menu-selection on-click="selectionClick"></zen-menu-selection>
+      </menu>
     `;
   }
 
@@ -35,9 +39,11 @@ class ZenMenuElement extends LitElement {
 
 
   updateMenu() {
-    console.log("menu was clicked when XP was:" + this.xp);
+    console.log("menu was updated when XP was:" + this.xp);
 
-    this.menu = "menu was clicked when XP was:" + this.xp;
+    this.menu = "menu was updated when XP was:" + this.xp;
+
+    // loop through Selections, check cost to add to displayed.
   }
 
   selectionClick(e) {

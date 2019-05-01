@@ -13,8 +13,7 @@ class MyElement extends LitElement {
   constructor() {
     super();
     this.name = 'Zen Project';
-    this.addEventListener('xp-changed', this.modifyXp);
-    this.addEventListener('my-event', this.modifyXp);
+    this.addEventListener('zen-event-xp-changed', this.modifyXp);
   }
 
   render() {
@@ -23,13 +22,9 @@ class MyElement extends LitElement {
 solid purple;   } </style>
     <p>Hello, Welcome to ${this.name}!</p>
     <span class="tooltip">Here is your progress</span><br />
-    <zen-progress onMyEvent="(e) => {console.log("my event"); console.log(e)}" onXpChanged=${this.modifyXp} onShouldUpdate=${this.modifyXp} @XpChanged=${this.modifyXp}  ></zen-progress></br> 
+    <zen-progress></zen-progress></br> 
     <span class="tooltip">Choose something from the menu</span><br />
     <zen-menu class="xp"></zen-menu>`;
-//  @click=${this.modifyXpClick} 
-// onClick="(e) => {console.log(e)}"
-// @myevent=${this.modifyXp} 
-//@MyeventChanged=${this.modifyXp}
   }
 
   firstUpdated() {

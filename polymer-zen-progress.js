@@ -24,9 +24,11 @@ class ZenProgressElement extends LitElement {
 
   render() {
     return html`
-      <style> .xp { color: blue; } </style>
+      <style> .progress { color: blue;   display: block;  float: left;   border: 1px solid red;   } </style>
+      <div class="progress">
       <span class="title">This is the Zen Progress Component.</br></span>
-      <span class="tooltip"><button @click=${this.click}>Click</button> for XP:<span class="xp" on-click="${this.click}">${this.xp}</span></span><br />
+      <span class="tooltip"><button @click=${this.click}>Click</button> for XP:${this.xp}</span><br />
+      </div>
     `;
   }
 
@@ -44,21 +46,12 @@ class ZenProgressElement extends LitElement {
 
   click() {
     this.xp = this.xp + 100;
-    // let event = new CustomEvent('xp-changed', {
-    //   detail: {
-    //     message: 'XP increased',
-    //     xp: this.xp
-    //   }
-    // });
-    let myEvent = new CustomEvent('my-event', {
-      detail: { message: 'my-event happened.', xp: this.xp },
+    let event = new CustomEvent('zen-event-xp-changed', {
+      detail: { message: 'xp changed', xp: this.xp },
       bubbles: true,
       composed: true
     });
-    this.dispatchEvent(myEvent);
-    let click = new Event('click');
-    // click.detail.xp=this.xp;
-    this.dispatchEvent(click);
+    this.dispatchEvent(event);
   }
 
   async getMoreState() {
